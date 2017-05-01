@@ -1,0 +1,5 @@
+- Takes a file of digits
+- converts to integer?
+- converts integer to hex
+- section into 6-char pieces
+- creates pixels etc.
