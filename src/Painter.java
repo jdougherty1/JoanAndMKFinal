@@ -44,11 +44,11 @@ public class Painter {
         byte[] sourcePixels = new byte[width * height * 3];
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
+            	//Need to alter the following (3 lines of) code in order to complete project
+                //We should not need to alter much else
                 byte R = (byte)(0xFF * (width - j) / width);
                 byte B = (byte)(0b11111111 * j / width);
                 byte G = (byte)(255 * i / height);
-                //Need to alter the following (3 lines of) code in order to complete project
-                //We should not need to alter much else
                 sourcePixels[3*(i * width + j)] = B;
                 sourcePixels[3*(i * width + j) + 1] = G;
                 sourcePixels[3*(i * width + j) + 2] = R;
