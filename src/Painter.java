@@ -15,8 +15,8 @@ public class Painter {
     static BufferedImage image;
    
     public static void main(String[] args) {
-        int width = 400;
-        int height = 400;
+        int width = 800;
+        int height = 800;
        
         frame = new JFrame();
         frame.setPreferredSize(new Dimension(width, height + 20));
@@ -47,26 +47,31 @@ public class Painter {
                 byte R = (byte)(0xFF * (width - j) / width);
                 byte B = (byte)(0b11111111 * j / width);
                 byte G = (byte)(255 * i / height);
+                //Need to alter the following (3 lines of) code in order to complete project
+                //We should not need to alter much else
                 sourcePixels[3*(i * width + j)] = B;
                 sourcePixels[3*(i * width + j) + 1] = G;
                 sourcePixels[3*(i * width + j) + 2] = R;
             }
         }   
        
-        String x = "This is the day that the Lord has made. Let us rejoice and be glad in it.";
-        int len = x.length();
-        for(int i = 0; i < height; i++){
-            for(int j = 0; j < width; j++){
-                int index = i* width + j;
-                byte R = (byte)x.charAt(index % len);
-                byte B = (byte)x.charAt(index % len);
-                byte G = (byte)x.charAt(index % len);
-                sourcePixels[3*(i * width + j)] = R;
-                sourcePixels[3*(i * width + j) + 1] = B;
-                sourcePixels[3*(i * width + j) + 2] = G;
-            }
-        }
-       
+        //The following code is just a different way of defining the sourcePixels[]
+        //It could be that our code will end up needing to look more like this than the
+        //  above code.
+//        String x = "This is the day that the Lord has made. Let us rejoice and be glad in it.";
+//        int len = x.length();
+//        for(int i = 0; i < height; i++){
+//            for(int j = 0; j < width; j++){
+//                int index = i* width + j;
+//                byte R = (byte)x.charAt(index % len);
+//                byte B = (byte)x.charAt(index % len);
+//                byte G = (byte)x.charAt(index % len);
+//                sourcePixels[3*(i * width + j)] = R;
+//                sourcePixels[3*(i * width + j) + 1] = B;
+//                sourcePixels[3*(i * width + j) + 2] = G;
+//            }
+//        }
+//       
        
         System.arraycopy(sourcePixels, 0, targetPixels, 0, sourcePixels.length);
        
