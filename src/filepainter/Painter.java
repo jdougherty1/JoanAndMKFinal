@@ -24,14 +24,7 @@ public class Painter {
 	static InputStream input = null;
 
 	public static void main(String[] args) {
-//		// Width and height of the frame
-//		int width = 800;
-//		int height = 800;
-	
-		/*
-		 * Use the read() method of the FileInputStream class to read in any file one char at a time.
-		 * It will return just one integer (based on the ASCII conversion table) for each byte(...?)
-		 */
+		// Get file from the first (zeroth) argument in the command line when running file
 		String filename = args[0];
 		File file = new File(filename);
 
@@ -39,7 +32,7 @@ public class Painter {
 		double numBytes = file.length();
 		double numPixels = numBytes/3;
 		
-		// Set width and height (for the frame &etc...) to be based on the size of the file
+		// Set width and height (for the frame &etc...) based on the size of the file
 		double doubWidth = Math.sqrt(numPixels);
 		double doubHeight = Math.sqrt(numPixels);
 		int width = (int)doubWidth;
