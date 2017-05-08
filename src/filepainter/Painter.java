@@ -72,13 +72,9 @@ public class Painter {
 		image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
 		final byte[] targetPixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
 
-		int [] sourcePixels = new int[width * height * 3];
+		byte [] sourcePixels = new byte[width * height * 3];
 		for(int i = 0; i < height; i++){
-			for(int j = 0; j < width; j++){
-//				byte r = (byte)(255 * (width - j) / width); 	//0xFF
-//				byte b = (byte)(255 * j / width); 				//0b11111111
-//				byte g = (byte)(255 * i / height);		
-				
+			for(int j = 0; j < width; j++){				
 				byte r = (byte)getOneByte();
 				byte g = (byte)getOneByte();
 				byte b = (byte)getOneByte();
@@ -92,17 +88,14 @@ public class Painter {
 			}
 		}
 		
-		System.out.println("Number of total bytes = " + numBytes);
-		System.out.println("Number of pixels = " + numPixels);
-		System.out.println("Width = " + width);
-		System.out.println("Height = " + height);
+//		System.out.println("Number of total bytes = " + numBytes);
+//		System.out.println("Number of pixels = " + numPixels);
+//		System.out.println("Width = " + width);
+//		System.out.println("Height = " + height);
 
-		try{
-			System.arraycopy(sourcePixels, 0, targetPixels, 0, sourcePixels.length);
-		}
-		catch(ArrayStoreException ex){
-			System.out.println("error in arraycopy");
-		}
+		
+		System.arraycopy(sourcePixels, 0, targetPixels, 0, sourcePixels.length);
+		
 		panel.repaint();
 
 	}
@@ -123,27 +116,3 @@ public class Painter {
 	}
 
 }
-
-
-/*
-*
-* //The following code is just a different way of defining the sourcePixels[]
-* //It could be that our code will end up needing to look more like this than the
-* //above code.
-*         String x = "This is the day that the Lord has made. Let us rejoice and be glad in it.";
-*         int len = x.length();
-*         for(int i = 0; i < height; i++){
-*             for(int j = 0; j < width; j++){
-*                 int index = i* width + j;
-*                 byte R = (byte)x.charAt(index % len);
-*                 byte B = (byte)x.charAt(index % len);
-*                 byte G = (byte)x.charAt(index % len);
-*                 sourcePixels[3*(i * width + j)] = R;
-*                 sourcePixels[3*(i * width + j) + 1] = B;   
-*                 sourcePixels[3*(i * width + j) + 2] = G;
-*             }
-*         }
-*        
-*/
-
-
